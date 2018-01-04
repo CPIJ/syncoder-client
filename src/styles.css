@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --dark-primary    :  rgb(55, 113, 214); 
+    --default-primary :  #4484F4; 
+    --light-primary   :  rgb(130, 167, 231); 
+    --text-primary    :  rgb(230, 230, 230); 
+    --accent          :  #9E9E9E; 
+    --primary-text    :  #ffffff; 
+    --secondary-text  :  #dbdbdb; 
+    --divider         :  #292429; 
+    --editor-background: rgb(238, 238, 238);
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono:400,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
+
+* {
+    margin: 0;
+    padding: 0;
+    /* font-family: "Roboto" */
+}
+
+body {
+    background-color: var(--editor-background);
+}
+
+.pull-right {
+    float: right;
+}
