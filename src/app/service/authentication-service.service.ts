@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from "rxjs/Observable";
+import { Account } from '../model/account';
 
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/catch';
@@ -24,6 +25,12 @@ export class AuthenticationService {
   forgotPassword(email: string): Observable<any> {
     return this.http
       .get(`${environment.host}${this.prefix}/forgotPassword?email=${email}`)
+      .map(res => res.json())
+  }
+
+  register(account: Account): Observable<any> {
+    return this.http
+      .put(`${environment.host}${this.prefix}/`, { email: account.email, username: account.username, password: account.password })
       .map(res => res.json())
   }
 }

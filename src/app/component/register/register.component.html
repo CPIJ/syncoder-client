@@ -1,3 +1,17 @@
-<p>
-  register works!
-</p>
+<div class="container">
+  <div class="card card-container">
+    <h2 id="profile-name" style="text-align:center; font-weight: bold; padding-bottom: 3vh;">Register</h2>
+    <form #form class="form-signin" ngNativeValidate>
+      <span id="reauth-email" class="reauth-email"></span>
+      <input [(ngModel)]="account.email" type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" required autofocus>
+      <input [(ngModel)]="account.username" type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" required autofocus>
+      <input [(ngModel)]="account.password" type="password" id="inputPassword" name="password" class="form-control" placeholder="Password"
+        required>
+      <br>
+      <button class="btn btn-lg btn-primary btn-block btn-signin" (click)="register(form)" type="submit">Register</button>
+    </form>
+    <a [routerLink]="['']" href="#" class="forgot-password">
+      Back to login
+    </a>
+  </div>
+</div>
