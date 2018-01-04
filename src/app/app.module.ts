@@ -1,8 +1,11 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router'
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
+
+import { routes } from './app.routes';
 
 @NgModule({
   declarations: [
@@ -10,7 +13,8 @@ import { LoginComponent } from './component/login/login.component';
     LoginComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(routes, { useHash: true })
   ],
   providers: [],
   bootstrap: [AppComponent]
