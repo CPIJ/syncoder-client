@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalContext } from '../../ultillity/local-context';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'header',
@@ -8,7 +9,7 @@ import { LocalContext } from '../../ultillity/local-context';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -16,9 +17,16 @@ export class HeaderComponent implements OnInit {
   getUsername() {
     return LocalContext.loggedInClient.account.username
       .split(' ')
-      .slice(0,2)
+      .slice(0, 2)
       .map(s => s[0])
       .join()
       .toUpperCase();
+  }
+
+  logout() {
+    if (confirm('Are you sure you want to logout?')) {
+      LocalContext.loggedInClient = null;
+      this.router.navigate(['']);
+    }
   }
 }
