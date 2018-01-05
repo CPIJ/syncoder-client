@@ -14,4 +14,20 @@
 <div class="container">
   <h1>Live Projects</h1>
   <hr>
+  <div *ngFor="let project of liveProjects">
+    <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th><h4>Name</h4></th>
+            <th><h4>Active clients</h4></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr (click)="joinProject(project)">
+            <td>{{project.id}}</td>
+            <td>{{project.clients.length}} / 8</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
 </div>

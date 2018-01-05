@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Template } from '../../model/template';
 import { ProjectService } from '../../service/project.service';
 import { Project } from '../../model/project';
+import { LocalContext } from '../../ultillity/local-context';
 
 @Component({
   selector: 'home',
@@ -23,5 +24,16 @@ export class HomeComponent implements OnInit {
       templates => this.templates = templates,
       error => console.warn(error)
       );
+
+    this.service
+      .getLiveProjects()
+      .subscribe(
+      projects => this.liveProjects = projects,
+      error => console.warn(error)
+      );
+  }
+
+  joinProject(project) {
+    console.log(`${LocalContext.loggedInClient.account.username} wants to join ${project.id}`);
   }
 }
