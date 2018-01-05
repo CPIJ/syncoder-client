@@ -3,7 +3,6 @@ import { Template } from '../../model/template';
 import { ProjectService } from '../../service/project.service';
 
 @Component({
-  // tslint:disable-next-line:component-selector
   selector: 'home',
   templateUrl: './home.component.html',
   providers: [ProjectService],
