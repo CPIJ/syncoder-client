@@ -8,13 +8,13 @@
     </span>
   </div>
   <ace-editor
-  [(text)]="text"
+  [(text)]="project.content"
   [mode]="'java'"
   [theme]="'eclipse'"
   [options]="options"
   [readOnly]="false"
   [autoUpdateContent]="true"
-  [durationBeforeCallback]="1000"
+  [durationBeforeCallback]="200"
   (textChanged)="onChange($event)"
   class="editor">
   </ace-editor>

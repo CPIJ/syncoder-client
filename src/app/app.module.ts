@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router'
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { StompService } from 'ng2-stomp-service';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
 
@@ -33,7 +35,7 @@ import { AceEditorComponent } from 'ng2-ace-editor';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [StompService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
