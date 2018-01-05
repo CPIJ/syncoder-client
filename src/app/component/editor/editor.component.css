@@ -6,3 +6,7 @@ input, button {
     height: 82.5vh;
     font-size: 1em;
 }
+
+.bar {
+    padding: 2vh 0 2vh 0
+}

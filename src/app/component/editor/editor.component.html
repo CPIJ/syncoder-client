@@ -1,20 +1,20 @@
 <header></header>
+
 <div class="container">
-  <br>
-  <div class="input-group">
-    <input type="text" class="form-control" placeholder="Projectname">
-    <span class="input-group-btn">
-      <button class="btn btn-info btn-lg" type="button">Compile</button>
-    </span>
+  <div class="row">
+    <div class="input-group bar">
+      <input type="text" class="form-control" placeholder="Projectname">
+      <span class="input-group-btn">
+        <button class="btn btn-info btn-lg" type="button">Compile</button>
+      </span>
+    </div>
+    <ace-editor [(text)]="content" [mode]="'java'" [theme]="'eclipse'" [options]="options" [readOnly]="false" [autoUpdateContent]="true"
+      [durationBeforeCallback]="200" (textChanged)="onChange($event)" class="editor col-sm-9 col-md-9">
+    </ace-editor>
+    <nav class="col-sm-3 col-md-3 hidden-xs-down bg-faded sidebar">
+      <h4>Peers</h4>
+      <hr>
+      <p *ngFor="let client of clients">{{ client.account.username }}</p>
+    </nav>
   </div>
-  <ace-editor
-  [(text)]="project.content"
-  [mode]="'java'"
-  [theme]="'eclipse'"
-  [options]="options"
-  [readOnly]="false"
-  [autoUpdateContent]="true"
-  [durationBeforeCallback]="200"
-  (textChanged)="onChange($event)"
-  class="editor">
-  </ace-editor>
+</div>

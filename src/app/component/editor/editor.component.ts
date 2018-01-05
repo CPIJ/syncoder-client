@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { LocalContext } from '../../ultillity/local-context';
 import { Project } from '../../model/project';
+import { Client } from '../../model/client';
 
 @Component({
   selector: 'app-editor',
@@ -12,15 +13,17 @@ import { Project } from '../../model/project';
 })
 export class EditorComponent implements OnInit {
 
-  project: Project = new Project();
-  previousProject: Project = new Project();
+  projectId: string;
+  content: string;
+  clients: Client[];
+  previousContent: string;
 
   constructor(private stomp: StompService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       if (params.project) {
-        this.project.id = params.project
+        this.projectId = params.project
       } else {
         this.router.navigate(['home']);
       }
@@ -37,37 +40,50 @@ export class EditorComponent implements OnInit {
       .then(() => {
         this.stomp.send("/syncoder/project/onOpened", {
           clientId: LocalContext.loggedInClient.id,
-          projectId: this.project.id,
+          projectId: this.projectId,
           email: LocalContext.loggedInClient.account.email
         })
       })
   }
 
   onChange(code) {
-    if (this.project.content != this.previousProject.content) {
-      this.previousProject.content = this.project.content;
-      this.stomp.send("/syncoder/project/change/" + this.project.id, {
-        id: this.project.id,
-        content: code
+    if (this.content != this.previousContent) {
+      this.previousContent = this.content;
+      this.stomp.send("/syncoder/project/change/" + this.projectId, {
+        id: this.projectId,
+        content: code,
+        clientId: LocalContext.loggedInClient.id
       })
     }
   }
 
   @HostListener('window:beforeunload', ['$event'])
   beforeunloadHandler(event) {
-    this.stomp.send("/syncoder/project/onClosed", { clientId: LocalContext.loggedInClient.id, projectId: this.project.id });
+    this.stomp.send("/syncoder/project/onClosed", { clientId: LocalContext.loggedInClient.id, projectId: this.projectId });
   }
 
   configureSubscriptions() {
-    this.stomp.subscribe('/topic/project/onClientCountChange/' + this.project.id, (data) => {
-      this.project.content = data.content;
-      console.log('client change');
-      
+    this.stomp.subscribe('/topic/project/onClientCountChange/' + this.projectId, (response) => {
+      console.log(response);
+           
+      if (response.sender === undefined || response.sender.id != LocalContext.loggedInClient.id) {
+        this.clients = response.project.clients;
+        console.log('client change', response.project.clients);
+      }
     })
 
-    this.stomp.subscribe('/topic/project/onchange/' + this.project.id, (project: Project) => {
-      this.project.content = project.content;
-      console.log('project change');
+    this.stomp.subscribe('/topic/project/onchange/' + this.projectId, (response) => {
+      if (response.sender == undefined || response.sender.id != LocalContext.loggedInClient.id) {
+        this.content = response.project.content;
+        console.log('project change', response.project);
+      }
+    })
+
+    this.stomp.subscribe('/topic/project/onJoin/' + LocalContext.loggedInClient.id, (project: Project) => {
+      this.content = project.content;
+      this.projectId = project.id;
+      this.clients = project.clients;
+      console.log('joined', LocalContext.loggedInClient, project);
     })
   }
 }
