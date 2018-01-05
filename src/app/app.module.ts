@@ -13,6 +13,7 @@ import { Http } from '@angular/http';
 import { HomeComponent } from './component/home/home.component';
 import { ProjectTemplateComponent } from './component/project-template/project-template.component';
 import { HeaderComponent } from './component/header/header.component';
+import { LiveProjectComponent } from './component/live-project/live-project.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HeaderComponent } from './component/header/header.component';
     RegisterComponent,
     HomeComponent,
     ProjectTemplateComponent,
-    HeaderComponent
+    HeaderComponent,
+    LiveProjectComponent
   ],
   imports: [
     BrowserModule,
