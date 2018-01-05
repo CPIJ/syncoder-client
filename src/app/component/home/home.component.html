@@ -12,22 +12,26 @@
 </div>
 <br>
 <div class="container">
-  <h2><strong>Live Projects</strong></h2>
+  <h2>
+    <strong>Live Projects</strong>
+  </h2>
   <hr>
-  <div *ngFor="let project of liveProjects">
-    <table class="table table-striped table-hover">
-        <thead>
-          <tr>
-            <th><strong>Name</strong></th>
-            <th><strong>Active clients</strong></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr (click)="joinProject(project)">
-            <td>{{project.id}}</td>
-            <td>{{project.clients.length}} / 8</td>
-          </tr>
-        </tbody>
-      </table>
-  </div>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>
+          <strong>Name</strong>
+        </th>
+        <th>
+          <strong>Active clients</strong>
+        </th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+    <tr *ngFor="let project of liveProjects" (click)="joinProject(project)">
+      <td>{{project.id}}</td>
+      <td>{{project.clients.length}} / 8</td>
+    </tr>
+    </tbody>
+  </table>
 </div>

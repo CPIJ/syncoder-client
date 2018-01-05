@@ -45,6 +45,7 @@ export class EditorComponent implements OnInit {
 
   onChange(code) {
     if (this.project.content != this.previousProject.content) {
+      this.previousProject.content = this.project.content;
       this.stomp.send("/syncoder/project/change/" + this.project.id, {
         id: this.project.id,
         content: code
@@ -60,11 +61,13 @@ export class EditorComponent implements OnInit {
   configureSubscriptions() {
     this.stomp.subscribe('/topic/project/onClientCountChange/' + this.project.id, (data) => {
       this.project.content = data.content;
+      console.log('client change');
+      
     })
 
     this.stomp.subscribe('/topic/project/onchange/' + this.project.id, (project: Project) => {
-      this.previousProject.content = this.project.content;
       this.project.content = project.content;
+      console.log('project change');
     })
   }
 }
