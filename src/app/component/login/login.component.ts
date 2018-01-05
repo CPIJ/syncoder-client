@@ -4,7 +4,7 @@ import { LocalContext } from '../../ultillity/local-context';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
+  selector: 'login',
   templateUrl: './login.component.html',
   providers: [AuthenticationService],
   styleUrls: ['./login.component.css']

@@ -4,7 +4,7 @@ import { AuthenticationService } from '../../service/authentication-service.serv
 
 
 @Component({
-  selector: 'app-register',
+  selector: 'register',
   templateUrl: './register.component.html',
   providers: [AuthenticationService],
   styleUrls: ['./register.component.css']
@@ -24,11 +24,12 @@ export class RegisterComponent implements OnInit {
         .subscribe(
           success => alert(success.message),
           error => alert(error)
-        )
+        );
     }
   }
 
   isValidEmail(email: string): boolean {
+    // tslint:disable-next-line:max-line-length
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email.toLowerCase());
   }
