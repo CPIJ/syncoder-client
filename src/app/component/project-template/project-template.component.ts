@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Template } from '../../model/template';
 
 @Component({
@@ -7,14 +7,14 @@ import { Template } from '../../model/template';
   templateUrl: './project-template.component.html',
   styleUrls: ['./project-template.component.css']
 })
-export class ProjectTemplateComponent implements OnInit {
+export class ProjectTemplateComponent {
 
   @Input() id: string;
   @Input() content: string;
 
   constructor() { }
 
-  ngOnInit() {
+  createNew() {
+    console.log('create new ' + this.id);
   }
-
 }
