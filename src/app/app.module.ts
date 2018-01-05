@@ -10,12 +10,14 @@ import { LoginComponent } from './component/login/login.component';
 import { routes } from './app.routes';
 import { RegisterComponent } from './component/register/register.component';
 import { Http } from '@angular/http';
+import { HomeComponent } from './component/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
