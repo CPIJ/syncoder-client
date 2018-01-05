@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Template } from '../../model/template';
 import { ProjectService } from '../../service/project.service';
+import { Project } from '../../model/project';
 
 @Component({
   selector: 'home',
@@ -11,6 +12,7 @@ import { ProjectService } from '../../service/project.service';
 export class HomeComponent implements OnInit {
 
   templates: Template[];
+  liveProjects: Project[]
 
   constructor(private service: ProjectService) { }
 
