@@ -17,6 +17,8 @@ import { ProjectTemplateComponent } from './component/project-template/project-t
 import { HeaderComponent } from './component/header/header.component';
 import { EditorComponent } from './component/editor/editor.component';
 import { AceEditorComponent } from 'ng2-ace-editor';
+import { AuthorizationGuard } from './security/authorization-guard';
+import { AuthenticationService } from './service/authentication-service.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,7 @@ import { AceEditorComponent } from 'ng2-ace-editor';
     FormsModule,
     HttpModule
   ],
-  providers: [StompService],
+  providers: [StompService, AuthorizationGuard, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

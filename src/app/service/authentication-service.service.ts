@@ -33,4 +33,10 @@ export class AuthenticationService {
       .put(`${environment.host}${this.prefix}/`, { email: account.email, username: account.username, password: account.password })
       .map(res => res.json())
   }
+
+  isAuthorized(client: Client): Observable<boolean> {
+    return this.http
+      .post(`${environment.host}${this.prefix}/isAuthorized`, client)
+      .map(res => res.json());
+  }
 }
