@@ -16,7 +16,12 @@
     <strong>Live Projects</strong>
   </h2>
   <hr>
-  <table class="table table-striped table-hover">
+  <div *ngIf="liveProjects.length == 0">
+    <p>No live projects at the moment.
+      <a href="javascript:void(0)" (click)="createProject()">Create one!</a>
+    </p>
+  </div>
+  <table *ngIf="liveProjects.length != 0" class="table table-striped table-hover">
     <thead>
       <tr>
         <th>

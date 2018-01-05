@@ -12,8 +12,8 @@ import { LocalContext } from '../../ultillity/local-context';
 })
 export class HomeComponent implements OnInit {
 
-  templates: Template[];
-  liveProjects: Project[]
+  templates: Template[] = []
+  liveProjects: Project[] = []
 
   constructor(private service: ProjectService) { }
 
@@ -35,5 +35,10 @@ export class HomeComponent implements OnInit {
 
   joinProject(project) {
     console.log(`${LocalContext.loggedInClient.account.username} wants to join ${project.id}`);
+  }
+
+  createProject() {
+    console.log('create new project');
+    
   }
 }
