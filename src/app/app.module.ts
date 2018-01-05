@@ -14,6 +14,7 @@ import { HomeComponent } from './component/home/home.component';
 import { ProjectTemplateComponent } from './component/project-template/project-template.component';
 import { HeaderComponent } from './component/header/header.component';
 import { EditorComponent } from './component/editor/editor.component';
+import { AceEditorComponent } from 'ng2-ace-editor';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { EditorComponent } from './component/editor/editor.component';
     ProjectTemplateComponent,
     HeaderComponent,
     EditorComponent,
+    AceEditorComponent
   ],
   imports: [
     BrowserModule,

@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditorComponent implements OnInit {
 
+  content: string
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onChange(code) {
+    console.log(code);
+    
   }
 
 }
