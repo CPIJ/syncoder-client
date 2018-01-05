@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../service/authentication-service.service';
 import { LocalContext } from '../../ultillity/local-context';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   email: string;
   password: string;
 
-  constructor(private authenticationService: AuthenticationService) { }
+  constructor(private authenticationService: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -23,10 +24,10 @@ export class LoginComponent implements OnInit {
       .subscribe(
       client => {
         LocalContext.loggedInClient = client;
+        this.router.navigate(['home']);
       },
       error => alert(error._body)
-      )
-
+      );
   }
 
   forgotPassword() {
@@ -34,6 +35,6 @@ export class LoginComponent implements OnInit {
       .subscribe(
       response => alert(`Your password is: ${response.password}`),
       error => alert(error._body)
-      )
+      );
   }
 }
