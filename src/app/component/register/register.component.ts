@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Account } from '../../model/account'
+import { Account } from '../../model/account';
 import { AuthenticationService } from '../../service/authentication-service.service';
 
 
@@ -11,7 +11,7 @@ import { AuthenticationService } from '../../service/authentication-service.serv
 })
 export class RegisterComponent implements OnInit {
 
-  account: Account = new Account()
+  account: Account = new Account();
 
   constructor(private authenticationService: AuthenticationService) { }
 

@@ -12,6 +12,7 @@ import { RegisterComponent } from './component/register/register.component';
 import { Http } from '@angular/http';
 import { HomeComponent } from './component/home/home.component';
 import { ProjectTemplateComponent } from './component/project-template/project-template.component';
+import { HeaderComponent } from './component/header/header.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ProjectTemplateComponent } from './component/project-template/project-t
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    ProjectTemplateComponent
+    ProjectTemplateComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
