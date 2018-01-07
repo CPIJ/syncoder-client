@@ -13,8 +13,4 @@ export class ProjectTemplateComponent {
   @Input() content: string;
 
   constructor() { }
-
-  createNew() {
-    console.log('create new ' + this.id);
-  }
 }

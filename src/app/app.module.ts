@@ -3,7 +3,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router'
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { AngularFontAwesomeModule  } from 'angular-font-awesome';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { InlineEditorModule } from '@qontu/ngx-inline-editor';
+import { ModalModule } from 'ngx-modialog';
+
 
 import { StompService } from 'ng2-stomp-service';
 
@@ -39,7 +42,8 @@ import { AdminPanelComponent } from './component/admin-panel/admin-panel.compone
     RouterModule.forRoot(routes, { useHash: true }),
     FormsModule,
     HttpModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    InlineEditorModule,
   ],
   providers: [StompService, AuthorizationGuard, AuthenticationService],
   bootstrap: [AppComponent]

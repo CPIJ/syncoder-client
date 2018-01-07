@@ -34,12 +34,24 @@ export class HomeComponent implements OnInit {
       );
   }
 
-  joinProject(project) {
-    this.router.navigate(['edit'], { queryParams: { project: project.id } })
-    console.log(`${LocalContext.loggedInClient.account.username} wants to join ${project.id}`);
+  joinProject(project: Project) {
+    if (project.clients.length < 8) {
+      this.router.navigate(['edit'], { queryParams: { project: project.id } })
+    }
   }
 
-  createProject() {
-    console.log('create new project');
+  createProject(baseProject: Project) {
+    const projectName = prompt('Project name:');
+
+    if ((/\S/.test(projectName))) {
+      let params;
+      if (baseProject) {
+        params = { queryParams: { project: projectName, content: baseProject.content } }
+      } else {
+        params = { queryParams: { project: projectName } }
+      }
+
+      this.router.navigate(['edit'], params)
+    }
   }
 }

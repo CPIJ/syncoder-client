@@ -17,6 +17,7 @@ export class EditorComponent implements OnInit {
   content: string;
   clients: Client[];
   previousContent: string;
+  isTemplate: boolean;
 
   constructor(private stomp: StompService, private route: ActivatedRoute, private router: Router) { }
 
@@ -27,8 +28,12 @@ export class EditorComponent implements OnInit {
       } else {
         this.router.navigate(['home']);
       }
-    })
 
+      if (params.content) {
+        this.content = params.content;
+        this.isTemplate = true;
+      }
+    })
 
     this.stomp.configure({
       host: environment.host + '/syncoder',
@@ -64,8 +69,6 @@ export class EditorComponent implements OnInit {
 
   configureSubscriptions() {
     this.stomp.subscribe('/topic/project/onClientCountChange/' + this.projectId, (response) => {
-      console.log(response);
-           
       if (response.sender === undefined || response.sender.id != LocalContext.loggedInClient.id) {
         this.clients = response.project.clients;
         console.log('client change', response.project.clients);
@@ -80,10 +83,13 @@ export class EditorComponent implements OnInit {
     })
 
     this.stomp.subscribe('/topic/project/onJoin/' + LocalContext.loggedInClient.id, (project: Project) => {
-      this.content = project.content;
-      this.projectId = project.id;
+      if (!this.isTemplate) {
+        this.content = project.content;
+      } else {
+        this.onChange(this.content)
+      }
+
       this.clients = project.clients;
-      console.log('joined', LocalContext.loggedInClient, project);
     })
   }
 }

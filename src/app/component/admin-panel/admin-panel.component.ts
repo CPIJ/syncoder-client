@@ -27,12 +27,6 @@ export class AdminPanelComponent implements OnInit {
     });
 
     this.stomp.startConnect()
-    .then(() => this.configureSubscriptions())
-  }
-
-  configureSubscriptions() {
-    this.stomp.subscribe('/topic/onRegister', (response: Account[]) => {
-      this.accounts = response;
-    })
+      .then(() => this.stomp.subscribe('/topic/onRegister', (response: Account[]) => this.accounts = response))
   }
 }

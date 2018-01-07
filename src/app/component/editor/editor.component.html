@@ -3,10 +3,8 @@
 <div class="container">
   <div class="row">
     <div class="input-group bar">
-      <input type="text" class="form-control" placeholder="Projectname">
-      <span class="input-group-btn">
-        <button class="btn btn-info btn-lg" type="button">Compile</button>
-      </span>
+      <h2>{{projectId}}</h2>
+      <hr>
     </div>
     <ace-editor [(text)]="content" [mode]="'java'" [theme]="'eclipse'" [options]="options" [readOnly]="false" [autoUpdateContent]="true"
       [durationBeforeCallback]="200" (textChanged)="onChange($event)" class="editor col-sm-9 col-md-9">
