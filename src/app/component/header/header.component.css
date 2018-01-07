@@ -7,3 +7,14 @@
 .navbar-dark {
     background-color: var(--dark-primary) !important;
 }
+
+.admin-panel {
+    color: white;
+    opacity: 1;
+    margin: 1em;
+}
+
+.admin-panel:hover {
+    opacity: 0.8;
+    color: white;
+}

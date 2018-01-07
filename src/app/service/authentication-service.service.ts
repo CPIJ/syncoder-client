@@ -39,4 +39,10 @@ export class AuthenticationService {
       .post(`${environment.host}${this.prefix}/isAuthorized`, client)
       .map(res => res.json());
   }
+
+  getAllAccounts(): Observable<Account[]> {
+    return this.http
+      .get(`${environment.host}${this.prefix}/account/all`)
+      .map(res => res.json());
+  }
 }

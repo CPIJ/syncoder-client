@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router'
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { AngularFontAwesomeModule  } from 'angular-font-awesome';
 
 import { StompService } from 'ng2-stomp-service';
 
@@ -19,6 +20,7 @@ import { EditorComponent } from './component/editor/editor.component';
 import { AceEditorComponent } from 'ng2-ace-editor';
 import { AuthorizationGuard } from './security/authorization-guard';
 import { AuthenticationService } from './service/authentication-service.service';
+import { AdminPanelComponent } from './component/admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [
@@ -29,13 +31,15 @@ import { AuthenticationService } from './service/authentication-service.service'
     ProjectTemplateComponent,
     HeaderComponent,
     EditorComponent,
-    AceEditorComponent
+    AceEditorComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes, { useHash: true }),
     FormsModule,
-    HttpModule
+    HttpModule,
+    AngularFontAwesomeModule
   ],
   providers: [StompService, AuthorizationGuard, AuthenticationService],
   bootstrap: [AppComponent]

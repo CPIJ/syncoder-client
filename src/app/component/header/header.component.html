@@ -10,6 +10,9 @@
     <ul class="navbar-nav mr-auto">
     </ul>
     <form class="form-inline">
+      <button *ngIf="client.account.isAdmin" [routerLink]="['/admin']" class="btn btn-link btn-lg admin-panel" type="button">
+        <fa name="cog" animation=""></fa>
+      </button>
       <button class="btn btn-success btn-lg btn-circle" (click)="logout()" type="button">{{getUsername()}}</button>
     </form>
   </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalContext } from '../../ultillity/local-context';
 import { Router } from '@angular/router';
+import { Client } from '../../model/client';
 
 @Component({
   selector: 'header',
@@ -9,10 +10,11 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  client: Client = LocalContext.loggedInClient;
+
   constructor(private router: Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   getUsername() {
     return LocalContext.loggedInClient.account.username
