@@ -6,7 +6,7 @@
       <h2>{{projectId}}</h2>
       <hr>
     </div>
-    <ace-editor [(text)]="content" [mode]="'java'" [theme]="'eclipse'" [options]="options" [readOnly]="false" [autoUpdateContent]="true"
+    <ace-editor [(text)]="content" [mode]="'java'" [theme]="'eclipse'" [readOnly]="false" [autoUpdateContent]="true"
       [durationBeforeCallback]="200" (textChanged)="onChange($event)" class="editor col-sm-9 col-md-9">
     </ace-editor>
     <nav class="col-sm-3 col-md-3 hidden-xs-down bg-faded sidebar">

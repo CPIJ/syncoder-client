@@ -1,17 +1,22 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { StompService } from 'ng2-stomp-service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { LocalContext } from '../../ultillity/local-context';
 import { Project } from '../../model/project';
 import { Client } from '../../model/client';
+import {AceEditorModule} from 'ng2-ace-editor';
 
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.css']
 })
-export class EditorComponent implements OnInit {
+export class EditorComponent implements OnInit, OnDestroy {
+  ngOnDestroy(): void {
+    debugger;
+    this.stomp.send("/syncoder/project/onClosed", { clientId: LocalContext.loggedInClient.id, projectId: this.projectId });
+  }
 
   projectId: string;
   content: string;
@@ -64,7 +69,7 @@ export class EditorComponent implements OnInit {
 
   @HostListener('window:beforeunload', ['$event'])
   beforeunloadHandler(event) {
-    this.stomp.send("/syncoder/project/onClosed", { clientId: LocalContext.loggedInClient.id, projectId: this.projectId });
+    // this.stomp.send("/syncoder/project/onClosed", { clientId: LocalContext.loggedInClient.id, projectId: this.projectId });
   }
 
   configureSubscriptions() {
@@ -87,6 +92,10 @@ export class EditorComponent implements OnInit {
         this.content = project.content;
       } else {
         this.onChange(this.content)
+      }
+
+      if (project.clients.length >= 8) {
+        this.router.navigate(['home']);
       }
 
       this.clients = project.clients;

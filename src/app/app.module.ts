@@ -4,9 +4,6 @@ import { RouterModule } from '@angular/router'
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { InlineEditorModule } from '@qontu/ngx-inline-editor';
-import { ModalModule } from 'ngx-modialog';
-
 
 import { StompService } from 'ng2-stomp-service';
 
@@ -20,7 +17,8 @@ import { HomeComponent } from './component/home/home.component';
 import { ProjectTemplateComponent } from './component/project-template/project-template.component';
 import { HeaderComponent } from './component/header/header.component';
 import { EditorComponent } from './component/editor/editor.component';
-import { AceEditorComponent } from 'ng2-ace-editor';
+// import { AceEditorComponent } from 'ng2-ace-editor';
+import { AceEditorModule } from 'ng2-ace-editor'
 import { AuthorizationGuard } from './security/authorization-guard';
 import { AuthenticationService } from './service/authentication-service.service';
 import { AdminPanelComponent } from './component/admin-panel/admin-panel.component';
@@ -34,7 +32,6 @@ import { AdminPanelComponent } from './component/admin-panel/admin-panel.compone
     ProjectTemplateComponent,
     HeaderComponent,
     EditorComponent,
-    AceEditorComponent,
     AdminPanelComponent
   ],
   imports: [
@@ -43,7 +40,7 @@ import { AdminPanelComponent } from './component/admin-panel/admin-panel.compone
     FormsModule,
     HttpModule,
     AngularFontAwesomeModule,
-    InlineEditorModule,
+    AceEditorModule
   ],
   providers: [StompService, AuthorizationGuard, AuthenticationService],
   bootstrap: [AppComponent]
