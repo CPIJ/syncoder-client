@@ -76,15 +76,11 @@ export class EditorComponent implements OnInit, OnDestroy {
     this.stomp.subscribe('/topic/project/onClientCountChange/' + this.projectId, (response) => {
       if (response.sender === undefined || response.sender.id != LocalContext.loggedInClient.id) {
         this.clients = response.project.clients;
-        console.log('client change', response.project.clients);
       }
     })
 
     this.stomp.subscribe('/topic/project/onchange/' + this.projectId, (response) => {
-      if (response.sender == undefined || response.sender.id != LocalContext.loggedInClient.id) {
         this.content = response.project.content;
-        console.log('project change', response.project);
-      }
     })
 
     this.stomp.subscribe('/topic/project/onJoin/' + LocalContext.loggedInClient.id, (project: Project) => {

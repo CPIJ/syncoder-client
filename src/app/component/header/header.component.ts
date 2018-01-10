@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
       .split(' ')
       .slice(0, 2)
       .map(s => s[0])
-      .join()
+      .join('')
       .toUpperCase();
   }
 
