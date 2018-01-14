@@ -27,8 +27,7 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     if (confirm('Are you sure you want to logout?')) {
-      LocalContext.loggedInClient = null;
-      this.router.navigate(['']);
+      this.router.navigate([''], {queryParams: {action: 'clearUser'}});
     }
   }
 }

@@ -14,7 +14,6 @@ import {AceEditorModule} from 'ng2-ace-editor';
 })
 export class EditorComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
-    debugger;
     this.stomp.send("/syncoder/project/onClosed", { clientId: LocalContext.loggedInClient.id, projectId: this.projectId });
   }
 
@@ -54,7 +53,8 @@ export class EditorComponent implements OnInit, OnDestroy {
           email: LocalContext.loggedInClient.account.email
         })
       })
-  }
+    
+    }
 
   onChange(code) {
     if (this.content != this.previousContent) {
@@ -69,7 +69,7 @@ export class EditorComponent implements OnInit, OnDestroy {
 
   @HostListener('window:beforeunload', ['$event'])
   beforeunloadHandler(event) {
-    // this.stomp.send("/syncoder/project/onClosed", { clientId: LocalContext.loggedInClient.id, projectId: this.projectId });
+    this.stomp.send("/syncoder/project/onClosed", { clientId: LocalContext.loggedInClient.id, projectId: this.projectId });
   }
 
   configureSubscriptions() {

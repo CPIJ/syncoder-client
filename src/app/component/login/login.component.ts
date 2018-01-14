@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../service/authentication-service.service';
 import { LocalContext } from '../../ultillity/local-context';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'login',
@@ -14,9 +14,16 @@ export class LoginComponent implements OnInit {
   email: string;
   password: string;
 
-  constructor(private authenticationService: AuthenticationService, private router: Router) { }
+  constructor(private authenticationService: AuthenticationService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      if (params.action) {
+        if (params.action === 'clearUser') {
+          LocalContext.loggedInClient = null;
+        }
+      }
+    })
   }
 
   login() {

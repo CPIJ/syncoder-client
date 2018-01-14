@@ -3,7 +3,7 @@ import { Template } from '../../model/template';
 import { ProjectService } from '../../service/project.service';
 import { Project } from '../../model/project';
 import { LocalContext } from '../../ultillity/local-context';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'home',
