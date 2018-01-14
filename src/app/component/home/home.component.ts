@@ -43,15 +43,17 @@ export class HomeComponent implements OnInit {
   createProject(baseProject: Project) {
     const projectName = prompt('Project name:');
 
-    if ((/\S/.test(projectName))) {
-      let params;
-      if (baseProject) {
-        params = { queryParams: { project: projectName, content: baseProject.content } }
-      } else {
-        params = { queryParams: { project: projectName } }
-      }
+    if (projectName) {
+      if ((/\S/.test(projectName))) {
+        let params;
+        if (baseProject) {
+          params = { queryParams: { project: projectName, content: baseProject.content } }
+        } else {
+          params = { queryParams: { project: projectName } }
+        }
 
-      this.router.navigate(['edit'], params)
+        this.router.navigate(['edit'], params)
+      }
     }
   }
 }
