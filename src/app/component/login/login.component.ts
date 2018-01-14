@@ -33,15 +33,21 @@ export class LoginComponent implements OnInit {
         LocalContext.loggedInClient = client;
         this.router.navigate(['home']);
       },
-      error => alert(error._body)
+      error => {
+        const object = JSON.parse(error._body);
+        alert(object.message);
+      }
       );
   }
 
   forgotPassword() {
     this.authenticationService.forgotPassword(this.email)
       .subscribe(
-      response => alert(`Your password is: ${response.password}`),
-      error => alert(error._body)
+      response => alert(`${response.message}`),
+      error => {
+        const object = JSON.parse(error._body);
+        alert(object.message);
+      }
       );
   }
 }

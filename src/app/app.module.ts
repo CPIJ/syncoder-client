@@ -17,7 +17,6 @@ import { HomeComponent } from './component/home/home.component';
 import { ProjectTemplateComponent } from './component/project-template/project-template.component';
 import { HeaderComponent } from './component/header/header.component';
 import { EditorComponent } from './component/editor/editor.component';
-// import { AceEditorComponent } from 'ng2-ace-editor';
 import { AceEditorModule } from 'ng2-ace-editor'
 import { AuthorizationGuard } from './security/authorization-guard';
 import { AuthenticationService } from './service/authentication-service.service';

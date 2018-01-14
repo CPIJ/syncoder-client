@@ -23,7 +23,10 @@ export class RegisterComponent implements OnInit {
       this.authenticationService.register(this.account)
         .subscribe(
           success => alert(success.message),
-          error => alert(error)
+          error => {
+            const object = JSON.parse(error._body);
+            alert(object.message);
+          }
         );
     }
   }
